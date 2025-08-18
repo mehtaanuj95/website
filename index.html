@@ -67,7 +67,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="https://www.linkedin.com/in/anujbhaimehta/"><img src="icons/linkedin2.svg"></a>
         </div>
         <div class="svgico">
-          <a href="https://github.com/mehtaanuj95"><img src="icons/octocat.svg" width="56px"></a>
+          <a id="openExtensionIcon" style="cursor: pointer;"><img src="icons/octocat.svg" width="56px"></a>
         </div>
       </div>
     </div>
@@ -87,11 +87,6 @@ I also worked part time for a few months developing speech recognition system (w
 <br><br>
   Apart from this, in my free time, I often write technical blogs (see one <a href="https://github.com/mehtaanuj95/photometric-frequency-analysis"> here </a>), make pet projects, play chess! I also have a deep interest in astronomy, and hence love taking a variety of online courses on coursera about it.
 <br><br>
-
-    <!-- Button to open the Chrome Extension -->
-    <div style="text-align: center; margin: 40px 0;">
-        <button id="openExtensionButton" style="font-size: 1.2rem; padding: 15px 30px; cursor: pointer; border-radius: 8px; border: 1px solid #ccc; background-color: #f0f0f0;">Open Extension Side Panel</button>
-    </div>
 
   <b>Timeline</b>.
  
@@ -200,11 +195,12 @@ function start() {
 
 <script>
     // --- Script to open the Chrome Extension Side Panel ---
-    const openButton = document.getElementById('openExtensionButton');
+    const openIcon = document.getElementById('openExtensionIcon');
 
-    if (openButton) {
-      openButton.addEventListener('click', () => {
-        console.log("Button clicked. Sending message to extension...");
+    if (openIcon) {
+      openIcon.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent any default <a> tag behavior
+        console.log("GitHub icon clicked. Sending message to extension...");
 
         // This message is sent to the window and will be picked up by the extension's content script.
         window.postMessage(
